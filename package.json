@@ -1,0 +1,24 @@
+{
+  "name": "webpack-http-push-server-plugin",
+  "version": "0.0.1",
+  "description": "A http file push to server tool plugin for webpack",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Neverland/webpack-http-push-server-plugin.git"
+  },
+  "keywords": [
+    "Webpack",
+    "http",
+    "upload"
+  ],
+  "author": "ienix",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Neverland/webpack-http-push-server-plugin/issues"
+  },
+  "homepage": "https://github.com/Neverland/webpack-http-push-server-plugin#readme"
+}
