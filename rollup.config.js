@@ -13,24 +13,32 @@
  */
 
 import babel from 'rollup-plugin-babel';
+import commonjs from 'rollup-plugin-commonjs';
+import async from 'rollup-plugin-async';
 
 export default {
-    input: 'index.js',
+    input: 'src/index.js',
     plugins: [
         babel({
-            include: 'index.js',
+            include: 'src/index.js',
             runtimeHelpers: false
-        })
+        }),
+        commonjs(),
+        async()
     ],
-    name: 'webpack-http-push-server-plugin',
     output: {
         file: 'dist/index.js',
         format: 'umd',
+        name: 'webpack-http-push-server-plugin',
+        globals: {
+            chokidar: 'chokidar'
+        }
     },
     external: [
-
-    ],
-    globals: {
-
-    },
+        'chokidar',
+        'fs',
+        'path'
+    ]
 };
+
+

@@ -1,31 +1,47 @@
 {
-  "name": "webpack-http-push-server-plugin",
-  "version": "0.0.2",
+  "author": {
+    "name": "ienix"
+  },
+  "bugs": {
+    "url": "https://github.com/Neverland/webpack-http-push-server-plugin/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
   "description": "A http file push to server tool plugin for webpack",
-  "main": "./dist/index.js",
-  "scripts": {
-    "test": "test"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Neverland/webpack-http-push-server-plugin.git"
-  },
+  "homepage": "https://github.com/Neverland/webpack-http-push-server-plugin#readme",
   "keywords": [
     "Webpack",
     "http",
     "upload"
   ],
-  "author": "ienix",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/Neverland/webpack-http-push-server-plugin/issues"
+  "main": "./dist/index.js",
+  "name": "webpack-http-push-server-plugin",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Neverland/webpack-http-push-server-plugin.git"
   },
-  "homepage": "https://github.com/Neverland/webpack-http-push-server-plugin#readme",
+  "scripts": {
+    "test": "test",
+    "build": "rollup -c"
+  },
+  "version": "0.0.2",
   "devDependencies": {
-    "rollup-plugin-babel": "^2.7.1",
-    "rollup-plugin-commonjs": "^8.2.6",
     "babel-core": "^6.25.0",
     "babel-preset-es2015-rollup": "^3.0.0",
-    "rollup": "^0.62.0"
+    "rollup": "^0.62.0",
+    "rollup-plugin-babel": "^2.7.1",
+    "rollup-plugin-commonjs": "^8.4.1",
+    "rollup-plugin-node-builtins": "^2.1.2"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
+    "chokidar": "^2.0.4",
+    "express": "^4.16.3",
+    "fs-extra": "^6.0.1",
+    "request": "^2.87.0",
+    "rollup-plugin-async": "^1.2.0",
+    "rollup-plugin-node-globals": "^1.2.1"
   }
 }
