@@ -19,37 +19,43 @@ app.use(bodyParser.json({ type: 'application/*+json' }));
 
 app
     .post('/reciver', (request, response) => {
-        request.setEncoding('utf8');
-        request.on('data', data => {
-            let result = null;
+        let sourceData = [];
+        request
+            .setEncoding('utf8')
+            .on('data', data => {
+                sourceData.push(data);
+            })
+            .on('end', () => {
+                let result = sourceData.join('');
 
-            try {
-                result = JSON.parse(data);
-            }
-            catch (e) {
-                console.log(e, '`Parse JSON error`');
-                return response.sendStatus(500);
-            }
-
-            try {
-                let {content = '', path = '', resovlePath = ''} = result;
-                let dirPath = PATH.dirname(resovlePath);
-
-                if (!FS.existsSync(dirPath)) {
-                    FSE.ensureDirSync(dirPath);
+                try {
+                    result = JSON.parse(result);
+                }
+                catch (e) {
+                    console.log(e, '`Parse JSON error`');
+                    return response.sendStatus(500);
                 }
 
-                FS.writeFileSync(resovlePath, content, {encoding: 'utf8', flag: 'w'});
+                try {
+                    let {content = '', path = '', resovlePath = ''} = result;
+                    let dirPath = PATH.dirname(resovlePath);
+                    let filePath = PATH.join(resovlePath);
 
-                console.log('[OK] - The `%s` write success!', resovlePath);
-            }
-            catch(e) {
-                console.log(e, '`Write file error`');
-                return response.sendStatus(500);
-            }
+                    if (!FS.existsSync(dirPath)) {
+                        FSE.ensureDirSync(dirPath);
+                    }
 
-            response.sendStatus(200);
-        });
+                    FS.writeFileSync(filePath, content, {encoding: 'utf8', flag: 'w'});
+
+                    console.log('[OK] - The `%s` write success!', filePath);
+                }
+                catch(e) {
+                    console.log(e, '`Write file error`');
+                    return response.sendStatus(500);
+                }
+
+                response.sendStatus(200);
+            });
     })
     .get('/reciver', (request, response) => {
         response.send('hello world!')
