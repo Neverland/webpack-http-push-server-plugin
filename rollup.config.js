@@ -5,13 +5,6 @@
  * @since 2018-7-9
  */
 
- /**
- * @file rollup.config
- * @author ienix(enix@foxmail.com)
- *
- * @since 2017/7/17
- */
-
 import babel from 'rollup-plugin-babel';
 import commonjs from 'rollup-plugin-commonjs';
 import async from 'rollup-plugin-async';
